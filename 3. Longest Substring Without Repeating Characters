@@ -1,0 +1,42 @@
+const test1 = "abcabcbb"; // 3
+const test2 = "bbbbb"; // 1
+const test3 = "pwwkew"; // 3
+
+function solution(s) {
+  s = 'dvdf'
+  let substring = [];
+  let longest = 1;
+  
+  if (s.length === 0) {
+    return 0;
+  }
+
+    for(let i = 0; i < s.length; i++) {
+      let copyString = s;
+      copyString = s.slice(i);
+      console.log('iter:', i,copyString);
+      
+      Array.from(copyString).forEach((letter, j) => {
+    substring.push(letter);
+      if (substring.includes(s[j+1])) {
+        console.log('iter:', i, s[j+1])
+        console.log('iter:',i, substring);
+      if (substring.length > longest ) {        
+        longest = substring.length
+      }
+ 
+      substring = []
+    }
+  })
+      if (substring.length === s.length || substring.length > longest) {
+    longest = substring.length
+  }
+      substring = []
+}
+
+  return longest;
+}
+
+console.log('test1:', solution(test1))
+console.log('test2:',solution(test2))
+console.log('test3:',solution(test3))
